@@ -1,4 +1,4 @@
-// var Board = function( selector ) {
+ // var Board = function( selector ) {
 //   // Your board related code goes here
   
 //   // Use $elem to access the DOM element for this board
@@ -18,7 +18,15 @@
 // $(function() {
 //   // This code will run when the DOM has finished loading
 // });
+function BM (boardArray){
+  this.boardArray = [];
+} 
 
+BM.prototype = {
+  addToArray: function(board){
+    this.boardArray.push(board);
+  }
+}
 
 var Board = function( selector ) {
   this.postItsGroup = []
@@ -38,6 +46,7 @@ Board.prototype = {
 
   addpostIt: function(postIt) {
     this.postItsGroup.push(postIt);
+    console.log(this.postItsGroup)
   },
 
   deletepostIt: function(postIt) {
@@ -70,14 +79,14 @@ postIt.prototype = {
 
 $(function() {
   
-  boards = []
+  mgr = new BM 
   
   $('#new_board').on('click', function(){
     board = new Board('#board');
-    boards.push(board)
+    mgr.addToArray(board)
     board.clearBoard()
     board.renderBoard();
-    console.log(boards)
+    console.log(mgr.boardArray)
   })
   
   $(document).on('click', '.content', function(event){
