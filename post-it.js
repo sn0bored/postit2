@@ -18,7 +18,7 @@
 // $(function() {
 //   // This code will run when the DOM has finished loading
 // });
-function BM (boardArray){
+function BM (){
   this.boardArray = [];
 } 
 
@@ -41,7 +41,8 @@ Board.prototype = {
   },
 
   clearBoard: function(){
-
+    console.log(this)
+    $(this).hide()
   },
 
   addpostIt: function(postIt) {
